@@ -1,25 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <!-- meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>Antony</title>
-    
-    <!-- icono y css -->
-    <link rel="icon" href="spike.ico" /> 
-    <link rel="stylesheet" href="main.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manuel Rivera - Ingeniero de Sistemas</title>
+  <link rel="stylesheet" href="main.css">
+
+  <!-- icono y css -->
+  <link rel="icon" href="manu.ico" /> 
+  <link rel="stylesheet" href="main.css">
   
-  <body>
-    <div class="ruido"></div>
-    <div class="capaSP"></div>
-    <div class="terminal">
-      <h1>Error <span class="errorcode">404</span></h1>
-      <p class="mensaje">Página en construcción, regrese en otro momento</p>
-      <p class="mensaje">Escuche <a href="https://youtu.be/eyI635o2pmk" target="_blank">The Real Folk Blues</a> y también <a href="https://twitter.com/ntonyrivera" target="_blank">sigueme en Twitter</a></p>
-      <p class="mensaje">Buena suerte.</p>
-    </div>
-  </body>
+</head>
+  
+</head>
+<body>
+  <!-- Fondo animado de partículas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <h1>Manuel Rivera</h1>
+    <h2>Ingeniero de Sistemas</h2>
+    <p>Construyo soluciones tecnológicas que transforman ideas en realidades.</p>
+    <p class="tagline">Cloud Computing | Machine Learning | LLMs</p>
+
+    <!-- Botón de contacto -->
+    <a href="mailto:manuel@digitalrivem.com" class="btn">📩 Contáctame</a>
+  </div>
+
+  <!-- Script para partículas -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const numParticles = 80;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 1.2;
+        this.speedY = (Math.random() - 0.5) * 1.2;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = "rgba(0, 255, 200, 0.7)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < numParticles; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    init();
+    animate();
+  </script>
+</body>
 </html>
