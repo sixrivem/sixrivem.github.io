@@ -1,112 +1,100 @@
-@import 'https://fonts.googleapis.com/css?family=Inconsolata';
-
-html {
-  min-height: 100%;
-}
-
-body {
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  height: 100%;
-  background-color: #000000;
-  background-image: radial-gradient(#11581E, #041607), url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: 'Inconsolata', Helvetica, sans-serif;
-  font-size: 1.5rem;
-  color: rgba(128, 255, 128, 0.8);
-  text-shadow:
-      0 0 1ex rgba(51, 255, 51, 1),
-      0 0 2px rgba(255, 255, 255, 0.8);
 }
 
-.ruido {
-  pointer-events: none;
-  position: absolute;
-  width: 100%;
+html, body {
   height: 100%;
-  background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  opacity: .02;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a0f1c;
+  color: #fff;
+  overflow: hidden;
 }
 
-.capaSP {
-  pointer-events: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background:
-      repeating-linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0,
-      rgba(0, 0, 0, 0.3) 50%,
-      rgba(0, 0, 0, 0) 100%);
-  background-size: auto 4px;
-  z-index: 1;
-}
-
-.capaSP::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  display: block;
+/* Fondo de partículas */
+#particles {
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  z-index: 0;
+}
+
+/* Contenido */
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.content h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #00f5ff, #00ffb3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #a8f7ff;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.content p {
+  font-size: 1.1rem;
+  color: #d0eaff;
+  margin: 0.3rem 0;
+}
+
+.content .tagline {
+  font-style: italic;
+  opacity: 0.8;
+  margin-top: 1rem;
+}
+
+/* Botón futurista */
+.btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00ffcc;
+  text-decoration: none;
+  border: 2px solid #00ffcc;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-      0deg,
-      transparent 0%,
-      rgba(32, 128, 32, 0.2) 2%,
-      rgba(32, 128, 32, 0.8) 3%,
-      rgba(32, 128, 32, 0.2) 3%,
-      transparent 100%);
-  background-repeat: no-repeat;
-  animation: scan 7.5s linear 0s infinite;
+  background: linear-gradient(90deg, transparent, rgba(0,255,200,0.6), transparent);
+  transition: 0.5s;
 }
 
-@keyframes scan {
-  0%        { background-position: 0 -100vh; }
-  35%, 100% { background-position: 0 100vh; }
+.btn:hover::before {
+  left: 100%;
 }
 
-.terminal {
-  box-sizing: inherit;
-  position: absolute;
-  height: 100%;
-  width: 1000px;
-  max-width: 100%;
-  padding: 4rem;
-  text-transform: uppercase;
-}
-
-.mensaje {
-  color: rgba(128, 255, 128, 0.8);
-  text-shadow:
-      0 0 1px rgba(51, 255, 51, 0.4),
-      0 0 2px rgba(255, 255, 255, 0.8);
-}
-
-.mensaje::before {
-  content: "> ";
-}
-
-a {
+.btn:hover {
+  background: rgba(0, 255, 200, 0.1);
   color: #fff;
-  text-decoration: none;
-}
-
-a::before {
-  content: "[";
-}
-
-a::after {
-  content: "]";
-}
-
-.errorcode {
-  color: white;
+  box-shadow: 0 0 15px #00ffcc;
 }
