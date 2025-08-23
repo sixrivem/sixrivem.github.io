@@ -98,3 +98,27 @@ html, body {
   color: #fff;
   box-shadow: 0 0 15px #00ffcc;
 }
+
+/* Marca de agua */
+.watermark {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 2px;
+  font-style: italic;
+  z-index: 1;
+  user-select: none;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgba(0, 255, 200, 0.3);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(0, 255, 200, 0.6);
+  }
+}
